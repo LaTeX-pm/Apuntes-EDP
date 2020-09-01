@@ -1,65 +1,73 @@
-\chapter{Introducción}
+\chapter{Capítulo de prueba}
+\lipsum[1-2]\MarginNote{Hola soy un texto que se supone que debe de dar un salto de linea en algún momento}
+\lipsum[3]\MarginNote{Soy una nota al margen}
 
-\section{}
-Electroestática
+\section{Sección de prueba}
 
-$dim \vect{E} = 3$ 
+En esta sección se probarán los entornos de los teoremas\FMG[Esto aparecerá en el índice]{Comprar pan}
+\subsection{Entornos con el estilo \textit{plain}}
 
-Ecuaciones de Poisson
-(insertar imagen)
-Lo que se hace usualmente se tiene un material (el cuál en matempatica se llama dominio)
-
-Otro tipo importante de problemas son los Problemas que dependen del tiempo.
-
-Si ahora las cosas de eléctrica dependen del tiempo, entonces el rotor no es 0y todo el escenario cambia.
-
-\begin{example}
+\begin{theorem}\namethm[]{Teorema Choro}
+hola soy un teorema.
 \begin{equation}
-    \partial_t^2 E_x - c^2 \nabla E_x = 1
+    e^{i\pi} + 1 = 0
 \end{equation}
+\end{theorem}
+
+\begin{lemma}[Lema Choro]
+HOLA soy un lema. Aquí va \emphname{un nombre}
+\end{lemma}
+
+\begin{corollary}[HOLA soy un corolario]
+soy un corolario.
+\end{corollary}
+
+\begin{proposition}[Proposición chora]
+HoLa Soy una proposición.
+\end{proposition}
 
 
-Es la ecuación de ondas.
+\subsection{Entornos con el estilo \textit{definition}}
 
-Uno piensa en fijar $E(t=0)$ y $\partial_t T(t=0)$ y se calcula. Es un prototipo de ecuación para fenómenos que conservan energía.
+\begin{definition}\namethm[]{EDO no lineal}
+una \textit{EDO no lineal} es simplemente una EDO que no es lineal.
+\end{definition}
 
-Hay otra ecuación:
-\begin{equation}
-    -i \partial_t \psi = - \nabla \psi + V \psi
-\end{equation}
+\begin{exercise}[Ejercicio]
+Lo anterior es tan trivial que ni siquiera vale como ejercicio.
+\end{exercise}
 
-La cuál es la Ec. de Scrödinger
-
-Hay otra ecuación similar que es la ecuación del calor $u(x, T)$:
-\begin{eqnarray}
-    \vect{q} 
-    &= 
-    - {\nabla} 
-    \cdot T\\
-    \partial_t u &= \nabla \cdot \vect{q}
-\end{eqnarray}
-
-Donde $q$ es el flujo de calor
-
-$\vect{u} (\vect{x}, t)$ velocidad elemento de fluido
-\begin{equation}
-    \partial_t \vect{u} + \vect{u} \cdot \nabla \vect{u} = - \nabla p + \mu \Delta \vect{u}
-\end{equation}
-
-Esto nos muestra que existe una jungla de ecuaciones
-
-Recomendación de libro:
-
-para ir ``a pie'' se recomienda Jeffrey Rauch PDE, es de Springer. Es un libro del acercamiento más clásico.
-
-Mientras que ``a helicóptero'', un bueno acercamiento es Brezis. Para la parte de Espacio de Sobolev, se ocupará este libro.
-
-Liev Loss Analysis (se sacarán algunas demostraciones de este libro).
-
-Evans PDE. Es un libro que queda muy grande para el curso.
-
+\begin{example}[Inserte un ejemplo aquí]
+Hola soy un ejemplo.
 \end{example}
 
-¿Cómo vamos a funcionar? Este es un curso bastante pesado. Así que se tiene una propuesta: ver menos materia pero verlas bien en profundidad. También se tenía planeado en tener 2 cátedras y dejar la última hora. Pero este miércoles Sí habrá clases.
 
-Evaluaciones: La idea es trabajar durante el semestre. Un de las ideas que se le ocurre es hacer un apunte juntos. Otra idea es presentar un proyecto. O si es muy complicado, también existe un control (que será un tercio de la materia). Y finalmente un examen. Sí o sí el examen será oral obligatorio.
+
+\subsection{Entornos con el estilo \textit{remark}}
+
+\begin{remark}[Observación]
+Estoy observando el teclado.
+\end{remark}
+
+\begin{note}[Nota importante]
+Comprar más leche de soja.
+\end{note}
+\begin{conclusion}[Conclusión final]
+En conclusión, me gusta el helado.
+\end{conclusion}
+
+\missingfigure{falta una figura}
+
+\subsection{etc...}
+\lipsum[4-7]
+
+
+
+\subsection{Subsección de prueba}
+\lipsum[8]
+\subsection{Otra subsección de prueba}
+\lipsum[9-20]
+\chapter{Otro capítulo de prueba}
+\lipsum[10]
+\section{Hola soy otra sección de prueba}
+\lipsum[11-40]
