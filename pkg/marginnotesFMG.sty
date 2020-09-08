@@ -43,5 +43,5 @@
 \newcommand{\namethm}[2][]{\ifthenelse{\equal{#1}{}}{{\estilonamethm (#2)}\MarginNote{#2}}{{\estilonamethm (#2)}\MarginNote{#1}}}
 
 % \emphname[texto nota al margen]{texto en itálica}: Ocupado para enfatizar el nombre a la hora de definir algún objeto. Si es que en el argumento de los paréntesis cuadrado no se entrega nada, automáticamente tomará el argumento con las llaves para la nota al margen.
-\def\estiloemphname {\rmfamily\itshape\bfseries} % Define el estilo del contenido de \emphname
+\def\estiloemphname {\rmfamily\scshape} % Define el estilo del contenido de \emphname
 \newcommand{\emphname}[2][]{\ifthenelse{\equal{#1}{}}{{\estiloemphname #2}\MarginNote{#2}}{{\estiloemphname #2}\MarginNote{#1}}}

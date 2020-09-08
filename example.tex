@@ -1,73 +1,278 @@
-\chapter{Capítulo de prueba}
-\lipsum[1-2]\MarginNote{Hola soy un texto que se supone que debe de dar un salto de linea en algún momento}
-\lipsum[3]\MarginNote{Soy una nota al margen}
+\chapter{Introducción}
 
-\section{Sección de prueba}
+\section{Motivación: Ejemplos típicos de ecuaciones en derivadas parciales}
 
-En esta sección se probarán los entornos de los teoremas\FMG[Esto aparecerá en el índice]{Comprar pan}
-\subsection{Entornos con el estilo \textit{plain}}
+Las ecuaciones en derivadas parciales aparecen donde sea la cantidad de interés (por ejemplo, para ver el cambio del precio, temperatura, densidad) depende de varias variables y satisface una ley \textit{local} que determina una relación entre los valores de la función y sus derivadas. En esta sección veremos brevemente un par de ejemplos físicos, pero hay que tener en mente que ecuaciones del mismo estilo ocurren en una variedad de contextos.
 
-\begin{theorem}\namethm[]{Teorema Choro}
-hola soy un teorema.
+\begin{example}\namethm{Las ecuaciones de Laplace y Poisson}
+
+En electro-estática, el campo eléctrico generado por una distribución de carga $\rho$ satisface
+\begin{eqnarray}
+    \rot E = 0 & \mbox{ y } & \div E = \frac{\rho}{\varepsilon_0}
+\end{eqnarray}
+
+La primera ecuación implica que existe una función $\phi$ (potencial electro-estática) tal que
 \begin{equation}
-    e^{i\pi} + 1 = 0
+    E = - \nabla \phi
 \end{equation}
-\end{theorem}
 
-\begin{lemma}[Lema Choro]
-HOLA soy un lema. Aquí va \emphname{un nombre}
-\end{lemma}
+y entonces obtenemos
+\begin{equation}
+    - \Delta \phi = \frac{\rho}{\varepsilon_0}, \qquad \mbox{donde } \Delta := \sum_{i=1}^{d} \partial_{i}^2
+\end{equation}
 
-\begin{corollary}[HOLA soy un corolario]
-soy un corolario.
-\end{corollary}
+Esta ecuación es la ecuación de Poisson, o cuando $\rho = 0$ se conoce como la ecuación de Laplace. La solución que se puede leer en cada libro de física es
+\begin{equation}
+    \phi(x) = \frac{1}{4\pi\varepsilon_0} \int \frac{\rho (y)}{|x-y|} dy.
+\end{equation}
 
-\begin{proposition}[Proposición chora]
-HoLa Soy una proposición.
-\end{proposition}
+Es una fórmula de representación que deja varias preguntas matemáticas: ¿Cómo nos aseguramos que define una función de clase $C^2$ que es solución de la ecuación? ¿Qué pasa si tenemos cargas puntuales o distribuidos sobre una superficie? Si la fórmula no define una función de clase $C^2$, ¿Puedo decir que todavía resuelve la ecuación en algún sentido?
 
+La ecuación de Laplace es omnipresente en aplicaciones donde se llega a una forma de equilibrio. También es prototipo de un grupo de operadores que se llaman \emphname[Elíptico]{elípticos}.
 
-\subsection{Entornos con el estilo \textit{definition}}
-
-\begin{definition}\namethm[]{EDO no lineal}
-una \textit{EDO no lineal} es simplemente una EDO que no es lineal.
-\end{definition}
-
-\begin{exercise}[Ejercicio]
-Lo anterior es tan trivial que ni siquiera vale como ejercicio.
-\end{exercise}
-
-\begin{example}[Inserte un ejemplo aquí]
-Hola soy un ejemplo.
 \end{example}
 
+% \subsection{Las ecuaciones de ondas y Schödinger}
+
+\begin{example}\namethm{Las ecuaciones de ondas y Schödinger}
+
+Si ahora consideramos las ecuaciones de electrodinámica, pero con $\rho = 0$, obtenemos que los campos eléctricos y magnéticos satisfacen
+\begin{eqnarray}
+    \rot E = - \partial_t B, & \qquad & \rot B = \frac{1}{c^2} \partial_t E.
+\end{eqnarray}
+y
+
+\begin{equation}
+    \div E = \div B = 0.
+\end{equation}
+
+Combinando las cuatro ecuaciones y asumiendo nuevamente que ambos campos son funciones de clase $C^2$, concluimos que cada componente de $E$ y $B$ satisfacen la \emphname[Ecuación de ondas]{ecuación de ondas}
+
+% \end{example}
+
+% A pesar de que existen ecuaciones ``estáticas'', o mejor dicho, que no dependen del tiempo, existen otras ecuaciones que sí dependen del tiempo. Tal caso es cómo la siguiente ecuación:
+
+% \begin{example}\namethm{Ecuación de Ondas}
+
+\begin{eqnarray}
+    \partial_t^2 E_x - c^2 \nabla E_x = 0, &\qquad \mbox{ donde } c = 1
+\end{eqnarray}
+
+Donde en esta ecuación, se piensa fijar las cantidades $E(t=0)$ y $\partial_t E(t=0)$. Esto supone un prototipo de ecuación para fenómenos que conservan energía. Ejemplos como estos los veremos en más detalle.
+\end{example}
+
+\begin{example}\namethm{Ecuación de Schödinger}
+Esta ecuación es muy importante en la física y se verá en el curso
+\begin{equation}
+    -i\partial_t \psi = - \Delta\psi + V \psi
+\end{equation}
+
+Lo destacable es que aparecen números complejos, con lo que será necesario hacer todo con números complejos para hacerlo más general. Además de que será necesario porque se verán también transformadas de Fourier.
+\end{example}
+
+\begin{example}\namethm{Ecuación del Calor}
+En esta ecuación se incluye la temperatura $u(x, T)$ que satisface la \textit{Ley de Fourier}
+\begin{equation}
+    \partial_t u = \nabla \cdot \vq
+\end{equation}
+
+Que dice que el cambio de la temperatura en el tiempo es igual a la divergencia del campo $\vq$, donde $\vq$ es el flujo de calor. Y la ley de Fourier dice que $\vq$ es
+\begin{equation}
+    \vq = -\vnabla T
+\end{equation}
+
+Es decir, el calo va desde las temperaturas altas hasta las temperaturas bajas. Gracias a esto, se puede deducir (no sé como lo hizo, pero lo hizo) que
+
+\begin{equation}
+    \partial_t u = \Delta u
+\end{equation}
+
+Esta ecuación también está relacionado con el movimiento Browniano
+\end{example}
+
+\begin{example}\namethm{Ecuación de Fluido Incomprensible}
+Existen ecuaciones mucho más difíciles. Por ejemplo, si se estudia un fluido incomprensible, y definiendo $\vu(\vx, t)$ como la velocidad de un elemento de fluido, entonces la ecuación que describe esta situación es
+\begin{equation}
+    \rho \Big( \partial_t \vu + \vu \cdot \nabla \vu \Big) = - \nabla p  + \mu \Delta \vu
+\end{equation}
+
+Siendo esta ecuación tan difícil que es uno de los problemas del milenio.\footnote{Es decir, que si lo resuelves, te llevas un millón de dólares :D!}
+\end{example}
+
+\section{Jungla de Ecuaciones}
+
+Todo lo comentado solo nos indica que existe una ``\textit{jungla de ecuaciones}'', dónde se puede seguir agregando más ecuaciones tanto como la imaginación lo permita.
+
+Y esto nos dice que existen dos maneras de ir a estudiar la jungla: 
+\begin{itemize}
+    \item Ir con un cuchillo para cortar las lianas e ir a pie, o bien,
+    \item Ir en un helicóptero sobrevolando la jungla.
+\end{itemize}
+
+El libro de Brezis es el acercamiento del helicóptero, pero faltan varias herramientas que se necesitan en el curso, con lo cuál no se seguirá (completamente) el libro de Brezis.
+
+Hay otros libros que van a pie, como el libro de Jeffrey Rauch, que se llama \textit{PDE}; este libro es el acercamiento más clásico. Con lo que se intentará ocupar ambos libros. 
+
+Está libro de Evans, que también se llama \textit{PDE}, pero es demasiado para el curso, con lo que sólo se sacarán algunas cosas.
+
+\section{¿Cómo vamos a funcionar?}
+
+Se planea ver menos materia, pero lo que se vea sea en profundidad, es decir, que se dominen muy bien esos puntos. También se planea ver dos cátedras a la semana. Para evaluar el curso, se planea trabajar durante el semestre. La idea es hacer un apunte juntos
 
 
-\subsection{Entornos con el estilo \textit{remark}}
-
-\begin{remark}[Observación]
-Estoy observando el teclado.
-\end{remark}
-
-\begin{note}[Nota importante]
-Comprar más leche de soja.
-\end{note}
-\begin{conclusion}[Conclusión final]
-En conclusión, me gusta el helado.
-\end{conclusion}
-
-\missingfigure{falta una figura}
-
-\subsection{etc...}
-\lipsum[4-7]
 
 
 
-\subsection{Subsección de prueba}
-\lipsum[8]
-\subsection{Otra subsección de prueba}
-\lipsum[9-20]
-\chapter{Otro capítulo de prueba}
-\lipsum[10]
-\section{Hola soy otra sección de prueba}
-\lipsum[11-40]
+
+
+
+
+
+
+% 2 de sep
+% \chapter{Teoría de Distribuciones}
+
+% \section{Introducción}\FMG{Volver a ver el video para escribir bien la introducción}
+\begin{example}\namethm{Ecuación de transporte}
+
+\end{example}
+La ecuación más sencilla es la ecuación de transporte en $1 + 1$ dimensiones\footnote{Esta notación es útil para destacar 1 dim. espacial y 1 dim. temporal.}. Tenemos una función $u:\R\times\R \to \R$ tal que cumple
+
+\begin{equation}
+\left\{
+\begin{array}{l}
+    \partial_t u(t, x) + c \partial_x u(t, x) = 0 \\
+    u(0, x) = u_0(x)
+\end{array}
+\right.
+\end{equation}
+
+y se desea ver las soluciones. Ahora bien, una manera de encontrar la solución, es tratando de encontrar curvas especiales que dependan del tiempo. Es decir, proponer $x = \varphi(t)$, de forma que se interprete que es una trayectoria. Y se quiere escoger $\varphi$ tal que la función $f(t) = u(t, \varphi(t))$ es constante. Luego, como $f$ es constante, al derivarlo nos queda
+\begin{eqnarray}
+    0 
+    &=& \partial_t u(t, \varphi(t)) + \partial_x u(t, \varphi(t)) \varphi'(t) \\
+    &=& \partial_x u(t, \varphi(t)) \{ -c + \varphi'(t) \} \\
+    &\implies& \varphi' = c\\
+    &\implies& \varphi(t) = x_0 + ct
+\end{eqnarray}
+
+Es decir, la curva que estabamos buscando, es de hecho una línea recta.
+
+% Una forma de encontrar la solución es buscar lineas especiales que dependan del tiempo. vamos a ver: $u = \varphi(t)$
+
+\missingfigure{grafico 1}
+
+$f(t) = y(t, \varphi(t))$ constante. 
+
+\begin{eqnarray}
+    0 
+    &= \partial_t u(t, \varphi(t)) + \partial_x u(t, \varphi(t)) \varphi' (t)\\
+    &= \partial_x u() [- c + \varphi'(t)]
+\end{eqnarray} 
+
+Lo que implica que $\varphi' = c$ y $\varphi(t) = x_0 + ct$, luego, $u(x, t) = u_0(x - ct)$ y lo que hace es básicamente es transportar la función $u_0$ a través del tiempo. Estas lineas rectas se llaman ``características'', que tienen toda una teoría.
+
+Exuación de Burgers sin viscosidad 
+\begin{equation}
+    \partial_t u + u \partial_x u = 0
+\end{equation}
+
+¿Buscamos de nuevo el $\varphi(t)$? tq $u(t, \varphi(t)) = C$ constante
+
+\begin{eqnarray}
+    0 
+    &= \partial_t u + \partial_x u \varphi'\\
+    & = \partial_x u [-u + \varphi'(t)]
+\end{eqnarray}
+
+\FMG{Hacer un comando para los sistemas (los que tienen la llave)}
+
+
+Luego, $\varphi' (t) = u(t, \varphi(t)) = u(0, \varphi(0))$, donde $\varphi(0)= x_0$. y así, $\varphi' (t) = u_0(\varphi(0))$.
+
+\missingfigure{grafico 2}
+
+Luego, $\varphi(t) = \varphi(0) + u_0(\varphi(0))t$
+
+\FMG{Crear un comando de notacion}
+
+\textbf{Notación}:
+
+\begin{equation}
+    \vec{\alpha} \in N_0^{d}
+\end{equation}
+
+\begin{equation}
+    x \in R^d,\ x^{\alpha} = x_1^{\alpha_1} x_2^{\alpha_2} \ldots x_d^{\alpha_d},\ \partial^{\alpha} = \partial_{x_1}^{\alpha_1} \partial_{x_2}^{\alpha_2} \cdots \partial_{x_3}^{\alpha_3}
+\end{equation}
+
+\begin{equation}
+    |\alpha| = \alpha_1 + \alpha_2 + \ldots + \alpha_d
+\end{equation}
+
+\FMG{Hacer un comando para los conjuntos}
+\FMG{Hacer comandos para las notaciones usuales buchefianas}
+\begin{equation}
+    C^{m} (\Omega) = \{ u:\Omega \to C | \partial^{\alpha} u \in C(\Omega) \ \forall \alpha, \ |\alpha| \leq m \}
+\end{equation}
+
+\begin{equation}
+    \alpha! = \alpha_1! \alpha_2! \ldots \alpha_d!
+\end{equation}
+
+Dominio: Un conjunto abiesto no vacío en $R^{d}$
+
+\begin{definition}
+Sea $\Omega$ un dominio, $D(\Omega)$ es el espacio de funciones de prueba (o text) de $\Omega$, definido como
+\begin{equation}
+    D(\Omega) := C_c^{\infty}(\Omega)
+\end{equation}
+\end{definition}\FMG{Hacer un comando para la $D$ bonita}
+
+Con la noción de convergencia $\{\varphi_n\} \to \varphi$ ssi existe $K \subset \Omega$ compacto tq $sopp(\varphi)\subset K \ \foralln$\FMG{Hacer un comando para el soporte} y $\sup_{\Omega} |\partial^{\alpha} \varphi_n - \partial^{\alpha} \varphi| \to 0 \ \forall \alpha \in N_0^{d}$.
+
+Donde si $sopp(\varphi) \subset K$, tenemos que $\forall \alpha N_0^{d} \sup_K |\partial^{\alpha} \varphi_n - \partial^{\alpha} \varphi| \to_n 0$
+
+\begin{exercise}
+Si $\Omega_1 \subset \Omega_2$, la extensión por cero es continua de $D(\Omega_1)$ a $D(\Omega_2)$
+
+$\forall \alpha \in N_0^{d}, \partial^{\alpha}$ es continua en $D(\Omega)$
+
+Encontrar $\Omega$ y $\{ \varphi_n\}$ tq $||\varphi||_{C^{k}(\Omega)} \to 0 \ \forall k \in N$\FMG{Hacer un comando para la norma} pero $\{ \varphi_n \} \not \to 0$ en $D(\Omega)$
+\end{exercise}
+
+
+
+
+
+
+
+
+
+
+% 04/09
+
+OJO\FMG{Hacer un comando con señaliticas uwu} Las funciones de $D(\Omega)$ nunca son analiticas.
+
+\begin{example}\namethm{Ejemplo de Cauchy}
+\FMG{Escribir la función}
+\end{example}
+
+Existe una manera super potente de crear más ejemplos: Ocupando convoluciones
+
+\begin{definition}
+Sean $g \in C_{c}^{\infty}(R^d)$, $h \in L^1$
+\begin{equation}
+    g * h(x) = \int_{R^d} g(x-y)  h(y) dy
+\end{equation}
+Es de clase $C^\infty$, es por eso que a $g$ le llaman modificador\FMG{No estoy seguro si esta es la palabra}
+
+y $sopp(g*h) \subset sopp(g) + sopp(h)$
+\end{definition}
+
+\begin{exercise}
+$\forall K \subset \Omega$ ($K$ compacto, $\Omega$ abierta) existe $\varphi \in D(\Omega)$ tal que $0\leq \varphi \leq 1$ y $\varphi(x) = 1$ $\forall x \in K$
+\end{exercise}
+
+
+

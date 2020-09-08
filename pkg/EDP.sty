@@ -1,0 +1,93 @@
+%% Base del template: overleaf.com/learn/latex/Writing_your_own_package
+%% Para saber más: 
+
+%% Identificación
+%% El paquete se identifica a sí mismo y se define la versión de LaTeX necesitada
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{EDP}[2020/09/04 Paquete que maneja los comando de EDP.]
+
+%% ====================================================================
+
+%% Paquetes requeridos y definiciones preliminares, necesarias para las opciones
+% \RequirePackage{ifthen}                    % Para tener condicionales
+\RequirePackage{amsmath}              % Paquete para documentos matemáticos
+\RequirePackage{systeme}   % Para poner sistema de ecuaciones
+
+\RequirePackage{amsfonts}
+% \def\showmnoption {false}             % Para controlar la opción de mostrar las notas al marge proporcionadas por este paquete o no.
+
+
+
+%% ====================================================================
+
+%% En esta parte se manejan las opciones pasadas al paquete
+
+% Si se le entrega otra opción, que retorne una advertencia.
+\DeclareOption*{\PackageWarning{examplepackage}{Unknown ‘\CurrentOption’}}
+\ProcessOptions\relax
+
+%% ====================================================================
+
+%% Cuerpo del paquete, la mayor parte de las declaraciones aparecen aquí.
+
+% Para redefinir operadores. Obtenido de https://tex.stackexchange.com/questions/175251/how-to-redefine-a-command-using-declaremathoperator
+\makeatletter
+\newcommand\RedeclareMathOperator{%
+  \@ifstar{\def\rmo@s{m}\rmo@redeclare}{\def\rmo@s{o}\rmo@redeclare}%
+}
+% this is taken from \renew@command
+\newcommand\rmo@redeclare[2]{%
+  \begingroup \escapechar\m@ne\xdef\@gtempa{{\string#1}}\endgroup
+  \expandafter\@ifundefined\@gtempa
+     {\@latex@error{\noexpand#1undefined}\@ehc}%
+     \relax
+  \expandafter\rmo@declmathop\rmo@s{#1}{#2}}
+% This is just \@declmathop without \@ifdefinable
+\newcommand\rmo@declmathop[3]{%
+  \DeclareRobustCommand{#2}{\qopname\newmcodes@#1{#3}}%
+}
+\@onlypreamble\RedeclareMathOperator
+\makeatother
+
+
+% Rotor y divergencia
+\DeclareMathOperator{\rot}{rot}
+\RedeclareMathOperator{\div}{div}
+
+% vq: Es el campo q. El flujo de calor
+\newcommand{\vq}{\vec{q}}
+\newcommand{\vu}{\vec{u}}
+\newcommand{\vx}{\vec{x}}
+
+
+% Nabla con un vector
+\newcommand{\vnabla}{\vec{\nabla}}
+
+
+
+
+
+% Definición de letras
+\newcommand{\A}{\mathcal{A}}
+\let\oldC=\C
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\D}{\mathbb{D}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\F}{\mathcal{F}}
+\let\oldG=\G
+\newcommand{\G}{\mathcal{G}}
+\let\oldH=\H
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\K}{\mathcal{K}}
+\let\oldL=\L
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\M}{\mathcal{M}}
+\newcommand{\N}{\mathbb{N}}
+\let\oldP=\P
+\renewcommand{\P}{\mathbb{P}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\let\oldS=\S
+\renewcommand{\S}{\mathcal{S}}
+\newcommand{\T}{\mathcal{T}}
+\newcommand{\Z}{\mathbb{Z}}
